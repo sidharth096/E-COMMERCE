@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 const signUp = async (req, res) => {
   try {
 
+    console.log("1111");
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
