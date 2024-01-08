@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { setProducts } from "../redux/slices/productSlice";
+import { logoutUser } from "../redux/slices/userSlice";
 
 const Header = () => {
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ const Header = () => {
   const user = useSelector((state) => state.user.user);
   const wishlist = useSelector((state) => state.wishlist);
   const [searchQuery, setSearchQuery] = useState('');
+ 
 
   const handleSearch = async () => {
     try {
@@ -26,11 +28,15 @@ const Header = () => {
     }
   };
 
+  const handleLogout =()=>{
+    dispatch(logoutUser())
+  }
+
   return (
     <header className="bg-sky-800 p-4 text-white h-14">
       <div className="flex justify-between px-10">
         <div>
-          <h1 className="text-xl font-semibold cursor-pointer">{user.name} </h1>
+          <h1 className="text-xl font-semibold cursor-pointer">{user?.name} </h1>
         </div>
         <div className="flex">
           <input
@@ -45,7 +51,7 @@ const Header = () => {
         </div>
         <div className="flex gap-5">
           {user ?(
-              <h3 className="text-xs cursor-pointer" >
+              <h3 className="text-xs cursor-pointer" onClick={handleLogout} >
               Logout
             </h3>
           ):(

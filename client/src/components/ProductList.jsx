@@ -6,12 +6,11 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { addToWishlist, removeFromWishlist } from '../redux/slices/wishlistSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts } from '../redux/slices/productSlice';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
 const ProductListing = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const products = useSelector((state) => state.products.products);
   const wishlist = useSelector((state) => state.wishlist);
 
@@ -31,7 +30,8 @@ const ProductListing = () => {
     };
 
     fetchProducts();
-  }, []);
+
+  }, [dispatch]);
 
   const handleWishlistClick = (productId) => {
     const isInWishlist = wishlist && wishlist.some((p) => p.id === productId);

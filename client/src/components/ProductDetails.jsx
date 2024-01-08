@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
@@ -30,7 +30,7 @@ const ProductDetails = (productId ) => {
     };
 
     fetchProductDetails();
-  }, [productId]);
+  }, [productId,dispatch]);
 
   const handleWishlistClick = (productId) => {
     console.log(productId);
