@@ -1,14 +1,19 @@
 Clone the repository:
 
-** run commands **
+** server run commands **
 
 cd server
+
 npm install
+
 npm start
-** run commands **
+
+** client run commands **
 
 cd client
+
 npm install
+
 npm start
 4 ** enter url on browser **
 
