@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Homepage from './pages/Homepage';
+import ProductDetalsPage from './pages/ProductDetalsPage';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         
         <Route path='/login' element={<Login/>}/>
+
+        <Route path='/product/:id' element={<ProductDetalsPage/>}/>
 
       </Routes>
       <ToastContainer position="top-right" autoClose={1500} hideProgressBar={false}/>

@@ -114,5 +114,51 @@ const addProduct = async (req, res) => {
   }
 };
 
+const getAllProducts = async (req, res) => {
+  try {
+   
+    const products = await Product.find();
 
-export {addCategory,addSubCategory,getAllCategories,getAllSubcategories,addProduct}
+    res.status(200).json( products );
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+const findProductById = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    console.log("111",productId);
+
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.status(200).json({ data: product });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+const searchProducts = async (req, res) => {
+  try {
+
+    const query = req.params.query 
+
+    const products = await Product.find({ title: { $regex: new RegExp(`^${query}`, 'i') } });
+
+  
+    console.log(products);
+    res.status(200).json( products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
+export {addCategory,addSubCategory,getAllCategories,getAllSubcategories,addProduct,getAllProducts,findProductById,searchProducts}

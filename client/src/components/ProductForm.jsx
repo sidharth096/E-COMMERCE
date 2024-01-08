@@ -3,11 +3,13 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { openModalProduct, closeModalProduct } from '../redux/slices/modalSlice';
+import { closeModalProduct } from '../redux/slices/modalSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const ProductFormModal = ({ onSubmit }) => {
+
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.isModalProductOpen);
 
@@ -20,7 +22,7 @@ const ProductFormModal = ({ onSubmit }) => {
   const [subcategoriesList, setSubcategoriesList] = useState([]);
 
   useEffect(() => {
-    // Fetch subcategories from your API
+
     const fetchSubcategories = async () => {
       try {
         const response = await axios.get('http://localhost:3001/getsubcategories');
@@ -30,7 +32,7 @@ const ProductFormModal = ({ onSubmit }) => {
       }
     };
 
-    // Call the fetchSubcategories function
+
     fetchSubcategories();
   }, []);
   
@@ -42,12 +44,6 @@ const ProductFormModal = ({ onSubmit }) => {
         toast.error('Please fill in all required fields');
         return;
       }
-      
-     console.log("hh", title,
-     subcategory,
-     description,
-     variants,
-     images,);
     
 
     try {
@@ -57,7 +53,6 @@ const ProductFormModal = ({ onSubmit }) => {
         formData.append('description', description);
         formData.append('variants', JSON.stringify(variants));
         
-        // Append each file to the FormData with the 'images' field name
          images.forEach((image, index) => {
             formData.append('images', image);
           });
@@ -203,7 +198,7 @@ return (
               Select Subcategory
             </option>
             {subcategoriesList.map((subcategory) => (
-              <option key={subcategory._id} value={subcategory.subcategoryname}>
+              <option key={subcategory._id} value={subcategory._id}>
                 {subcategory.subcategoryname}
               </option>
             ))}

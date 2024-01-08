@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { login,signUp } from "./controllers/userConroller.js";
-import {addCategory,addSubCategory,getAllCategories,getAllSubcategories,addProduct} from "./controllers/productController.js"
+import {addCategory,addSubCategory,getAllCategories,getAllSubcategories,addProduct,getAllProducts,findProductById,searchProducts} from "./controllers/productController.js"
 import { upload,handleUploadErrors } from "./midddleware/multerCloudinary.js";
 
 const router = Router()
@@ -16,5 +16,9 @@ router.post('/addproduct', upload.array('images'), handleUploadErrors, addProduc
 
 router.get('/getcategories',getAllCategories)
 router.get('/getsubcategories',getAllSubcategories)
+router.get('/getproducts',getAllProducts)
+
+router.get('/getproductbyId/:id',findProductById)
+router.get('/searchproduct/:query',searchProducts )
 
 export default router

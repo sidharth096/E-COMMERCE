@@ -5,6 +5,9 @@ import CategoryFormModal from '../components/CategoryForm'
 import SubcategoryForm from '../components/SubCategoryForm'
 import Sidebar from '../components/Sidebar'
 import ProductForm from '../components/ProductForm'
+import ProductList from '../components/ProductList'
+
+
 
 
 
@@ -15,7 +18,10 @@ const Homepage = () => {
     <>
     <Header/>
     <Subnavebar/>
+    <div className='flex'>
     <Sidebar/>
+    <ProductList/>
+    </div>
     <ProductForm/>
     <CategoryFormModal/>
     <SubcategoryForm/>

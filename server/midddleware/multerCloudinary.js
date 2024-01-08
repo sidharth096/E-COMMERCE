@@ -6,8 +6,6 @@ import multer from 'multer';
 
 dotenv.config()
 
-console.log("1")
-console.log(process.env.CLOUDINARY_NAME);
 cloudinary.config({
   cloud_name:process.env.CLOUDINARY_NAME,
   api_key:process.env.CLOUDINARY_APIKEY,
@@ -36,8 +34,6 @@ const storage = new CloudinaryStorage(storageOptions);
 
 const handleUploadErrors = (err, req, res, next) => {
     if (err instanceof multer.MulterError) {
-      console.log("3");
-      console.log(err);
       res.status(400).json({ error: `Multer error: ${err.message} (Field: ${err.field})` });
     } else if (err && err.message) {
       res.status(500).json({ error: err.message });

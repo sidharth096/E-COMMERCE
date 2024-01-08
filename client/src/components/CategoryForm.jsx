@@ -1,9 +1,9 @@
-// CategoryFormModal.js
+
 import React, { useState } from 'react';
 import axios from 'axios'
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from "react-redux";
-import { openModalCategory, closeModalCategory } from '../redux/slices/modalSlice';
+import { closeModalCategory } from '../redux/slices/modalSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,7 +30,7 @@ const CategoryFormModal = ({ onSubmit }) => {
 
   const modalStyle = {
     overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.3)', // Change the color here
+        backgroundColor: 'rgba(0, 0, 0, 0.3)', 
       },
     content: {
       width: '300px',
