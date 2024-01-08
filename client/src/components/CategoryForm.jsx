@@ -20,7 +20,6 @@ const CategoryFormModal = ({ onSubmit }) => {
     try {
         const response = await axios.post('http://localhost:3001/addcategory', { categoryname });
     
-        console.log('Server response:', response.data);
         toast.success(response.data.message);
         dispatch(closeModalCategory())
       } catch (error) {

@@ -79,8 +79,19 @@ const EditProduct = (productIdForEdit) => {
   };
 
   const handleVariantChange = (index, field, value) => {
-    
+    if ((field === 'price' || field === 'quantity') && !/^\d+$/.test(value)) {
+      toast.error(`Please enter a valid number for ${field}`);
+      return;
+    }
+  
+    setVariants((prevVariants) => {
+      const updatedVariants = [...prevVariants];
+      const updatedVariant = { ...updatedVariants[index], [field]: value };
+      updatedVariants[index] = updatedVariant;
+      return updatedVariants;
+    });
   };
+  
 
   const handleImageChange = (e) => {
     const files = e.target.files;

@@ -1,4 +1,4 @@
-// ProductFormModal.js
+
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -64,7 +64,6 @@ const ProductFormModal = ({ onSubmit }) => {
           },
         });
         
-      console.log('Server response:', response.data);
       toast.success(response.data.message);
       dispatch(closeModalProduct());
     } catch (error) {
