@@ -5,6 +5,7 @@ const initialState = {
   isModalCategoryOpen: false,
   isModalSubCategoryOpen: false,
   isModalProductOpen: false,
+  isModalProductEdidOpen:false
 };
 
 const modalSlice = createSlice({
@@ -29,6 +30,12 @@ const modalSlice = createSlice({
     closeModalProduct: (state) => {
       state.isModalProductOpen = false;
     },
+    openModalEditProduct: (state) => {
+      state.isModalProductEdidOpen = true;
+    },
+    closeModalEditProduct: (state) => {
+      state.isModalProductEdidOpen = false;
+    },
   },
 });
 
@@ -38,7 +45,9 @@ export const {
     openModalSubCategory,
     closeModalSubCategory,
     openModalProduct,
-    closeModalProduct   ,
+    closeModalProduct,
+    openModalEditProduct,
+    closeModalEditProduct
 } = modalSlice.actions;
 
 export default modalSlice.reducer;
